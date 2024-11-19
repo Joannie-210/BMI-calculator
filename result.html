@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>BMI</title>
+</head>
+<body>
+    <h2 co>Your BMI result</h2>
+    <p id="bmiAnswer"></p>
+    <p id="bmiCategory"></p>
+
+    <style>
+        body {
+            background: #ffeaec;
+            font-family: inter;
+        }
+
+        h2 {
+            font-size: 4rem;
+        }
+        p {
+            font-size: 2.5rem;
+        }
+        h2, p {
+            text-align: center;
+            color: #690031;
+        }
+        @media screen and (max-width: 500px) {
+            h2 {
+                font-size: 3.2rem;
+            }
+            p {
+                font-size: 2.2rem;
+            }
+
+        }
+        @media screen and (max-width: 380px) {
+            h2 {
+                font-size: 2.8rem;
+            }
+            p {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+        const bmiResult = localStorage.getItem("bmiResult");
+        const category = localStorage.getItem("category");
+
+        if(bmiResult && category) {
+
+            const formattedBmi = parseFloat(bmiResult).toFixed(3);
+
+            document.getElementById("bmiAnswer").textContent = `Your BMI is ${formattedBmi}`;
+             document.getElementById("bmiCategory").textContent = `${category}`;
+
+        }
+        else {
+            document.getElementById("bmiAnswer").textContent = "No result found, please enter required values";  
+        }
+    })
+    </script>
+</body>
+</html>
